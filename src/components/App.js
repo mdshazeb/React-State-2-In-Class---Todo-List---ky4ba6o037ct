@@ -48,12 +48,12 @@ function App()
 	<button id="btn" type="submit">Add Task</button>
 	</form>
     {list.map((ele)=><div key={ele.id}>
-		{todoediting===ele.id ?<textarea value={editText} onChange={function(e){
+		{todoediting===ele.id ?<textarea className="editTask" value={editText} onChange={function(e){
 			setEditText(e.target.value) 
 		}}></textarea>:<h1>{ele.text}</h1>}
 		
-		{todoediting===ele.id?<button onClick={()=>Edit(ele.id)}>Save</button>:<button onClick={()=>setTodoEditing(ele.id)}>Edit</button> }
-		<button onClick={()=>Delete(ele.id)}>Delete</button>
+		{todoediting===ele.id && {editText}!=null?<button className="saveTask" onClick={()=>Edit(ele.id)}>Save</button>:<button className="edit"onClick={()=>setTodoEditing(ele.id)}>Edit</button> }
+		<button className="delete"onClick={()=>Delete(ele.id)}>Delete</button>
 		
 		
 		
