@@ -15,7 +15,10 @@ function App()
   { 
 	 const list2= [...list].map((ele)=>{
 		  if(ele.id===id)
-		    {ele.text=editText
+		    {   if(editText=="")
+			    alert("plzz enter valid task")
+				else
+				ele.text=editText
 			}
 
 		   return ele
@@ -24,21 +27,32 @@ function App()
 	setEditText("")
 	setTodoEditing(null)
   }
+  
 	return (
 	<div id="main">
 		<form onSubmit={function(event){
+			
 			event.preventDefault()
+			
+              
+			   
 
+				
+				
 			const newtodo={
+			
 				id:new Date().getTime(),
 				text:value,
-				completed:false
+				//completed:false
 			}
+			
 			setlist([...list,newtodo])
 
 			//let list2=[...list,value]
 			//setlist(list2)
            setvalue("")
+		
+		
 		}}>
 		
 
@@ -47,15 +61,20 @@ function App()
 	}}></textarea>
 	<button id="btn" type="submit">Add Task</button>
 	</form>
-    {list.map((ele)=><div key={ele.id}>
-		{todoediting===ele.id ?<textarea className="editTask" value={editText} onChange={function(e){
+    { 
+	list.map((ele)=><div key={ele.id}>
+		{ ele.text!=""?(	
+		todoediting===ele.id ?<textarea className="editTask" value={editText} onChange={function(e){
 			setEditText(e.target.value) 
-		}}></textarea>:<h1>{ele.text}</h1>}
+		}}></textarea>:<h1>{ele.text}</h1>):null}
 		
-		{todoediting===ele.id && {editText}!=null?<button className="saveTask" onClick={()=>Edit(ele.id)}>Save</button>:<button className="edit"onClick={()=>setTodoEditing(ele.id)}>Edit</button> }
-		<button className="delete"onClick={()=>Delete(ele.id)}>Delete</button>
+		{ele.text!="" ?(todoediting===ele.id ?(editText!=""?<button className="saveTask" onClick={()=>Edit(ele.id)}>Save</button>:null):<button className="edit"onClick={()=>setTodoEditing(ele.id)}>Edit</button>):null }
+		{ele.text!=""?<button className="delete"onClick={()=>Delete(ele.id)}>Delete</button>:null}
 		
 		
+		
+	
+
 		
 		</div>)}
 
