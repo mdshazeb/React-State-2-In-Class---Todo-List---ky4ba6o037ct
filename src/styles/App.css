@@ -1,16 +1,101 @@
 h1 {
-    color: #27aedb;
-    text-align: center;
+    color:blue;
+    text-align: center
     }
     
 
-button{
-    color: #27aedb;
+#btn{
+    color:navy;
     text-align: center;
     justify-content: center;
     align-items: center;
+    font-size: large;
+    position: relative;
+    top:80px;
+    left:120px
 }
 
-.bg-pink{
-	background-color:pink;
+.list
+{
+    width:400px;
+    height:60px;
+    background-color: rgba(186, 224, 20, 0.918);
+    display:flex;
+    justify-content: center;
+    margin-top:10px;
+    position:relative;
+    top:100px;
+    left:30px;
+    border-radius: 10px;
+    border:5px solid rgb(245, 198, 129)
+    
+
 }
+.container{
+    display:flex;
+    justify-content: center
+    
+}
+body{
+    background-color:darkslategray;
+}
+#task{
+    position:relative;
+    top:100px;
+    left:100px;
+    border-radius: 20px;
+    background-color: #27aedb;
+    width:200px;
+    color:black;
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+    padding:10px;
+    box-sizing:border-box
+}
+.heading{
+    text-align: center;
+    font-size: 40px;
+    color: aliceblue
+}
+.edit{
+    margin-left:25px;
+    height:18px;
+    position :relative;
+    top:20px
+    
+}
+
+.delete{
+    margin-left:10px;
+    height:18px;
+    position :relative;
+    top:20px
+    
+}
+.editTask{
+    padding :20px;
+    width:150px;
+    border-radius: 10px;
+    font-size:15px;
+    background-color: aqua
+
+}
+.saveTask
+{
+    margin-left:10px;
+    height:25px;
+    position :relative;
+    top:20px
+}
+.main{
+    display:grid
+}
+ @media only screen and (max-width:800px) {
+     .main{
+         width: 70%;
+         height:100vh;
+         grid-template-columns: repeat(1,1fr)
+     }
+ }
+
+    

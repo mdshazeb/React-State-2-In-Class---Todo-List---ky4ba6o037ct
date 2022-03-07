@@ -1,6 +1,7 @@
 import React from "react";
 import "./../styles/App.css";
 import {useState} from 'react'
+import { FaEdit,FaTrashAlt } from 'react-icons/fa'
 function App() 
 { const [list,setlist]=useState([])
   const [value,setvalue]=useState("")
@@ -29,6 +30,7 @@ function App()
   }
   
 	return (
+	
 	<div id="main">
 		<form onSubmit={function(event){
 			
@@ -55,34 +57,35 @@ function App()
 		
 		}}>
 		
-
+     <h1 className="heading">Todo List</h1>
 	<textarea id="task"  value ={value} onChange={function(event){
 		setvalue(event.target.value)
 	}}></textarea>
 	<button id="btn" type="submit">Add Task</button>
 	</form>
     { 
-	list.map((ele)=><div key={ele.id} className="list">
+	list.map((ele)=><div className="container"><div key={ele.id} className="list">
 		{ ele.text!=""?(	
 		todoediting===ele.id ?<textarea className="editTask" value={editText} onChange={function(e){
 			setEditText(e.target.value) 
 		}}></textarea>:<h1>{ele.text}</h1>):null}
 		
-		{ele.text!="" ?(todoediting===ele.id ?(editText!=""?<button className="saveTask" onClick={()=>Edit(ele.id)}>Save</button>:null):<button className="edit"onClick={()=>setTodoEditing(ele.id)}>Edit</button>):null }
-		{ele.text!=""?<button className="delete"onClick={()=>Delete(ele.id)}>Delete</button>:null}
+		{ele.text!="" ?(todoediting===ele.id ?(editText!=""?<button className="saveTask" onClick={()=>Edit(ele.id)}>Save</button>:null):<button className="edit"onClick={()=>setTodoEditing(ele.id)}><FaEdit /></button>):null }
+		{ele.text!=""?<button className="delete"onClick={()=>Delete(ele.id)}><FaTrashAlt /></button>:null}
 		
 		
 		
 	
 
 		
+		</div>
 		</div>)}
 
 		
 		
 		
 	
-
+    
 	
 	
 	</div>
