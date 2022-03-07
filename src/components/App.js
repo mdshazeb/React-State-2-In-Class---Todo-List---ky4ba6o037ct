@@ -62,7 +62,7 @@ function App()
 	<button id="btn" type="submit">Add Task</button>
 	</form>
     { 
-	list.map((ele)=><div key={ele.id}>
+	list.map((ele)=><div key={ele.id} className="list">
 		{ ele.text!=""?(	
 		todoediting===ele.id ?<textarea className="editTask" value={editText} onChange={function(e){
 			setEditText(e.target.value) 
