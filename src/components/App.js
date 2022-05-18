@@ -40,7 +40,7 @@ function App()
 			   
 
 				
-				
+			
 			const newtodo={
 			
 				id:new Date().getTime(),
@@ -53,22 +53,25 @@ function App()
 			//let list2=[...list,value]
 			//setlist(list2)
            setvalue("")
-		
-		
+		   setEditText(value)
+		   
 		}}>
 		
      <h1 className="heading">Todo List</h1>
+	 <div className="data">
 	<textarea id="task"  value ={value} onChange={function(event){
 		setvalue(event.target.value)
 	}}></textarea>
+	
 	<button id="btn" type="submit">Add Task</button>
+	</div>
 	</form>
     { 
 	list.map((ele)=><div className="container"><div key={ele.id} className="list">
 		{ ele.text!=""?(	
 		todoediting===ele.id ?<textarea className="editTask" value={editText} onChange={function(e){
 			setEditText(e.target.value) 
-		}}></textarea>:<h1>{ele.text}</h1>):null}
+		}}></textarea>:<ul ><li>{ele.text}</li></ul>):null}
 		
 		{ele.text!="" ?(todoediting===ele.id ?(editText!=""?<button className="saveTask" onClick={()=>Edit(ele.id)}>Save</button>:null):<button className="edit"onClick={()=>setTodoEditing(ele.id)}><FaEdit /></button>):null }
 		{ele.text!=""?<button className="delete"onClick={()=>Delete(ele.id)}><FaTrashAlt /></button>:null}
