@@ -67,11 +67,11 @@ function App()
 	</div>
 	</form>
     { 
-	list.map((ele)=><div className="container"><div key={ele.id} className="list">
-		{ ele.text!=""?(	
+	list.map((ele)=><div className="container">
+		{ ele.text!=""?(	<div key={ele.id} className="list">{
 		todoediting===ele.id ?<textarea className="editTask" value={editText} onChange={function(e){
 			setEditText(e.target.value) 
-		}}></textarea>:<ul ><li>{ele.text}</li></ul>):null}
+		}}></textarea>:<ul ><li>{ele.text}</li></ul>}</div>):null}
 		
 		{ele.text!="" ?(todoediting===ele.id ?(editText!=""?<button className="saveTask" onClick={()=>Edit(ele.id)}>Save</button>:null):<button className="edit"onClick={()=>setTodoEditing(ele.id)}><FaEdit /></button>):null }
 		{ele.text!=""?<button className="delete"onClick={()=>Delete(ele.id)}><FaTrashAlt /></button>:null}
@@ -81,7 +81,7 @@ function App()
 	
 
 		
-		</div>
+		
 		</div>)}
 
 		
