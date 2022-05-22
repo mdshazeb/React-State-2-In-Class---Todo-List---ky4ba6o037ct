@@ -1,12 +1,24 @@
 import React from "react";
 import "./../styles/App.css";
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 import { FaEdit,FaTrashAlt } from 'react-icons/fa'
 function App() 
-{ const [list,setlist]=useState([])
+{  function getItems()
+	{
+		let items=localStorage.getItem('lists')
+          console.log(items)
+		if(items)
+		 return JSON.parse(localStorage.getItem('lists'))
+
+		 else
+		 return []
+	}
+	
+  const [list,setlist]=useState(getItems())
   const [value,setvalue]=useState("")
   const [editText,setEditText]=useState("")
   const [todoediting,setTodoEditing]=useState(null)
+ 
   function Delete(id){
 	const list2 =[...list].filter((ele)=>ele.id !=id) 
 	
@@ -28,6 +40,11 @@ function App()
 	setEditText("")
 	setTodoEditing(null)
   }
+
+  useEffect(()=>{
+	  localStorage.setItem('lists',JSON.stringify(list))  
+	 },
+	  [list])
   
 	return (
 	
